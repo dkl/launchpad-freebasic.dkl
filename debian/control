@@ -1,0 +1,24 @@
+Source: freebasic-bootstrap
+Section: devel
+Priority: extra
+Maintainer: Daniel C. Klauer <daniel.c.klauer@web.de>
+Build-Depends: debhelper (>= 8.0.0),
+	libncurses5-dev | libncurses-dev,
+	libffi-dev,
+	libgpm-dev,
+	libgl1-mesa-dev | libgl-dev,
+	libx11-dev, libxext-dev, libxpm-dev, libxrandr-dev, libxrender-dev
+Standards-Version: 3.9.2
+Homepage: http://www.freebasic.net/
+
+Package: freebasic-bootstrap
+Architecture: i386
+Depends: binutils,
+	gcc,
+	libncurses5-dev | libncurses-dev,
+	libffi-dev,
+	libx11-dev, libxext-dev, libxpm-dev, libxrandr-dev, libxrender-dev
+Conflicts: libfreebasic
+Recommends:
+Suggests: geany, gdb, gpm, llvm
+Description: FreeBASIC Compiler packaging test
