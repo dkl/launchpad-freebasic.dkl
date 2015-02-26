@@ -2,7 +2,7 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: FreeBASIC Compiler
 Source: http://www.freebasic.net
 
-Files: src/compiler/*
+Files: src/compiler/* tests/*
 Copyright: Copyright (C) 2004-2015 The FreeBASIC development team.
 License: GPL-2+
  This program is free software; you can redistribute it and/or
@@ -76,3 +76,19 @@ License: LGPL-2+ with exception
  you may extend this exception to your version of the library, but
  you are not obligated to do so. If you do not wish to do so, delete
  this exception statement from your version.
+
+Files: doc/fbdoc/* doc/libfbdoc/* doc/makefbhelp/*
+Copyright: Copyright (C) 2006-2008 The FreeBASIC development team.
+License: GPL-2+
+
+Files: doc/manual/*
+Copyright: Copyright (C) 2005-2015 Various members of the FreeBASIC community
+License: GFDL
+
+Files: doc/fbchkdoc/*
+Copyright: Copyright (C) 2008 Jeffery R. Marshall (coder[at]execulink[dot]com)
+License: GPL-2+
+
+Files: doc/fbhelp/*
+Copyright: Copyright (C) 2006-2008 Jeffery R. Marshall (coder[at]execulink.com)
+License: GPL-2+
