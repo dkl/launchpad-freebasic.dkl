@@ -13,7 +13,8 @@ Homepage: http://www.freebasic.net/
 
 Package: freebasic-bootstrap
 Architecture: i386
-Depends: binutils,
+Depends: ${shlibs:Depends}, ${misc:Depends},
+	binutils,
 	gcc,
 	libncurses5-dev | libncurses-dev,
 	libffi-dev,
