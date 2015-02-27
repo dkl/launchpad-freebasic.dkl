@@ -1,4 +1,4 @@
-FreeBASIC packages:
+FreeBASIC source & binary packages:
 
   freebasic-bootstrap-x86 - FB sources with precompiled compiler sources for x86
    => freebasic-bootstrap
