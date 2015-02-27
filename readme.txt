@@ -3,6 +3,9 @@ FreeBASIC packages:
   freebasic-bootstrap-x86 - FB sources with precompiled compiler sources for x86
    => freebasic-bootstrap
 
+  freebasic-bootstrap-x86-64 - Same for x86_64
+   => freebasic-bootstrap
+
   freebasic - build-depends: freebasic | freebasic-bootstrap
    => freebasic - meta package, depends: freebasic-compiler, freebasic-base, libfreebasic-dev
    => freebasic-compiler - provides fbc
