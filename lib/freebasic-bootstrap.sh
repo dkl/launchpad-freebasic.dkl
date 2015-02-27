@@ -40,7 +40,8 @@ FBC_BOOTSTRAP_SED=$(cat <<EOF
 	-e s/%FBC_BOOTSTRAP_FBARCH%/${FBC_BOOTSTRAP_FBARCH}/g
 	-e s/%FBC_BOOTSTRAP_FBDEBARCH%/${FBC_BOOTSTRAP_FBDEBARCH}/g
 	-e s/%FBC_BOOTSTRAP_DEBARCH%/${FBC_BOOTSTRAP_DEBARCH}/g
-EOF)
+EOF
+)
 cp -R debian/ $debsrcdir
 cd $debsrcdir/debian
 sed $FBC_BOOTSTRAP_SED < changelog.in > changelog
