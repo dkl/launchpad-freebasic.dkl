@@ -1,0 +1,6 @@
+[ppa-freebasic.dkl]
+fqdn = ppa.launchpad.net
+method = sftp
+incoming = ~freebasic.dkl/freebasic/ubuntu/
+login = freebasic.dkl
+allow_unsigned_uploads = 0
