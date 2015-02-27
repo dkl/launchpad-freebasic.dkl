@@ -1,15 +1,39 @@
-Source packages:
+FreeBASIC packages:
 
-  freebasic-bootstrap
-    FB sources with precompiled compiler sources (x86-specific)
-    Binary packages:
-      freebasic-bootstrap
+  freebasic-bootstrap-x86 - FB sources with precompiled compiler sources for x86
+   => freebasic-bootstrap
 
-  freebasic
-    Build-depends: freebasic | freebasic-bootstrap
-    Binary packages:
-      freebasic
+  freebasic - build-depends: freebasic | freebasic-bootstrap
+   => freebasic - meta package, depends: freebasic-compiler, freebasic-base, libfreebasic-dev
+   => freebasic-compiler - provides fbc
+   => freebasic-base - provides core FB headers (fbgfx.bi etc.), arch=any
+   => freebasic-crt - CRT bindings
+   => freebasic-gtk - GTK2/3 bindings
+   => freebasic-png - libpng bindings
+   => freebasic-zlib - zlib bindings
+   => ...
+   => libfreebasic-dev - meta package, depends on target-specific libs
+   => libfreebasic-linux-x86-dev - provides target-specific libfb stuff, cross-compiling packages based on gcc-multilib/mingw-w64
+   => libfreebasic-linux-x86-64-dev
+   => libfreebasic-win32-dev
+   => libfreebasic-win64-dev
+   => ... (e.g. ARM)
 
+  freebasic-bootstrap is used for bootstrapping fbc. The point is that in this case,
+  the source package is target-specific (freebasic-bootstrap-x86 etc.), due to the
+  precompiled fbc sources it contains. I think it would be ugly to do this with the
+  main "freebasic" source package. With that being separate from the bootstrapping stuff,
+  it can act like a "normal" package - one source, built for multiple targets.
+
+  freebasic-compiler, freebasic-base, freebasic-<binding> is pretty similar to the
+  packages for FreePascal: fpc, fp-unit-*, etc. Splitting up the bindings into separate
+  packages is especially useful, because not everybody needs all of them, and then for
+  example freebasic-zlib can depend on libz-dev.
+
+  The main reason to have libfreebasic-dev separated from the package containing fbc
+  is because that's how libraries typically are packaged. libfreebasic-dev isn't intended
+  to be used without fbc, but it could be. Also, this hints at the possibility at a
+  libfreebasic in the future.
 
 Some information on the FreeBASIC Compiler:
 
@@ -38,45 +62,19 @@ Some information on the FreeBASIC Compiler:
     lib/freebasic/ - runtime libraries which are statically linked into FB programs.
 
 
-Problems:
-
-  * How to split FreeBASIC up into packages, what packages to provide?
-
-    Everything in one "freebasic" package? Separate libfreebasic-dev?
-    rtlib/gfxlib2 separated? "freebasic" as meta-package that pulls in
-    "freebasic-compiler" and others? Bindings in separate arch=any packages such
-    as freebasic-crt/gtk/png etc.?
-
-    In any case, installing the "freebasic" package should always provide at
-    least a working fbc + rtlib/gfxlib2 + core headers (fbgfx.bi, file.bi,
-    dir.bi & co).
-
-    Maybe it doesn't make sense to have a libfreebasic-dev package separate
-    from freebasic, because they're only really useful together.
-    But technically the rtlib/gfxlib2 could be used without fbc (a corner case
-    example of that is bootstrapping fbc itself - then freebasic-bootstrap could
-    build-depend on libfreebasic-dev).
-
-  * Unknown copyright/license on some files
-
-  * FB runtime libs are only available as .a libs, not as .so yet.
-    GNU/Linux distros often prefer shared libs though.
-
-  * Potential library name conflict: libfb also is a framebuffer library,
-    may need to be renamed to libfreebasic
-
 To do:
 
+* Unknown copyright/license on some files; debian/copyright needs further
+  improvement
+* FB runtime libs are only available as .a libs, not as .so yet.
+  GNU/Linux distros often prefer shared libs though.
+  Should there be a shared libfreebasic?
+* Potential library name conflict: libfb also is a framebuffer library,
+  may need to be renamed to libfreebasic
 * add Vcs-Browser, Vcs-Git
 * make RPMs
 * upload to Launchpad + OBS
-* old ideas for Debian packaging: http://www.freebasic.net/forum/viewtopic.php?p=99209
 * freebasic-dbg, freebasic-doc?
-* cross-compiling packages based on gcc-multilib/mingw-w64 etc.:
-		freebasic-linux-x86
-		freebasic-linux-x86-64
-		freebasic-linux-arm
-		freebasic-win32
-		freebasic-win64 (or freebasic-mingw-w64-i386, freebasic-mingw-w64-x86-64, to match the mingw-w64 package names?)
-		probably all using the lib*-dev format?
-	and "freebasic" depends on the default libs for native compiling.
+* For freebasic-gtk we may need to do something like freebasic-gtk{2|3} which each depend
+  on freebasic-gtk and the corresponding libgtk*-dev package, because FB's GTK headers
+  support both GTK2 and GTK3, but the two libgtk*-dev packages can't be installed in parallel.
