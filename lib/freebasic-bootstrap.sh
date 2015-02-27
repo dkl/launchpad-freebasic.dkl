@@ -51,8 +51,8 @@ chmod +x rules
 rm *.in
 cd ../..
 
-# Create source .deb
+# Create source package
 cd $debsrcdir
-#debuild
-debuild -i -us -uc -S
+debuild -S
+#debuild -S -us -uc
 cd ..
