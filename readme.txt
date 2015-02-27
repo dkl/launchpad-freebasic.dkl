@@ -88,6 +88,26 @@ Some information on the FreeBASIC Compiler:
     lib/freebasic/ - runtime libraries which are statically linked into FB programs.
 
 
+Version numbers for Ubuntu Launchpad PPA:
+
+  ${fbversion}-0ppa1~utopic1
+
+  based on https://help.launchpad.net/Packaging/PPA/BuildingASourcePackage
+
+  "-0" because that way any official packages (which should be "-1" or higher)
+  will supersede the PPA one. freebasic isn't officially packaged yet, and
+  thus my packages aren't modifications of existing packages.
+
+  "ppa1", so packages from PPA can supersede packages from main repos.
+  Doesn't apply yet, but doesn't hurt. It's probably good anyways to mark the
+  packages as being from the PPA this way.
+
+  "~utopic1", because the binary packages are distro specific (glibc ABI,
+  maybe different dependency package names, etc.), and by uploading multiple
+  source packages versioned this way, we get builds for multiple distros in
+  parallel.
+
+
 To do:
 
 * Unknown copyright/license on some files; debian/copyright needs further
