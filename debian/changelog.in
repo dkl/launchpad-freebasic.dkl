@@ -1,0 +1,6 @@
+freebasic-bootstrap-%FBC_BOOTSTRAP_FBDEBARCH% (1.01.0-1) UNRELEASED; urgency=low
+
+  * Initial package using a FreeBASIC source tarball with pre-compiled
+    *.asm/*.c files for bootstrapping fbc.
+
+ -- Daniel C. Klauer <daniel.c.klauer@web.de>  Fri, 27 Feb 2015 16:51:12 +0100

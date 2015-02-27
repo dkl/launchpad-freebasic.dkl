@@ -35,6 +35,20 @@ FreeBASIC packages:
   to be used without fbc, but it could be. Also, this hints at the possibility at a
   libfreebasic in the future.
 
+
+What to do here:
+
+  ./freebasic-bootstrap-x86.sh
+    Creates the bootstrap package for x86. This involves compiling FB, so the host
+    must be set up accordingly.
+    This is best done on x86 (i.e. using a x86 fbc). Doing it on x86_64 (with a x86_64
+    fbc) should work too, but there's a bigger chance of running into bugs due to the
+    cross-compiling.
+
+  ./freebasic-bootstrap-x86_64.sh
+    Same for x86_64
+
+
 Some information on the FreeBASIC Compiler:
 
   FreeBASIC is a programming language influenced mostly by QBASIC, C, C++,
@@ -78,3 +92,5 @@ To do:
 * For freebasic-gtk we may need to do something like freebasic-gtk{2|3} which each depend
   on freebasic-gtk and the corresponding libgtk*-dev package, because FB's GTK headers
   support both GTK2 and GTK3, but the two libgtk*-dev packages can't be installed in parallel.
+* Make freebasic-bootstrap packages as minimal as possible? (remove docs, non-core headers,
+  gfxlib, etc.)
