@@ -22,4 +22,6 @@ Depends: ${shlibs:Depends}, ${misc:Depends},
 Conflicts: libfreebasic
 Recommends:
 Suggests: geany, gdb, gpm, llvm
-Description: FreeBASIC Compiler packaging test
+Description: FreeBASIC Compiler bootstrapped from precompiled sources
+  This package contains a version of the FreeBASIC Compiler that is built based
+  on precompiled sources. It is used to bootstrap the main freebasic package.
