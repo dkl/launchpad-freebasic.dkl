@@ -71,7 +71,16 @@ Some information on the FreeBASIC Compiler:
   fbc defaults to compiling for the native target, but it can cross-compile for
   other targets. The runtime libraries are target-specific.
 
-  fbc is written in FreeBASIC (self-hosting).
+  fbc is written in FreeBASIC (self-hosting), which means it depends on itself
+  to be compiled from source. This means bootstrapping can only be done by
+  importing existing binaries or by precompiling the compiler's .bas sources to
+  .asm or .c and include that in the source package, such that the rest of the
+  build can be done without fbc.
+  Similar cases (as far as I know - not 100% sure on this):
+   * I think Mageia bootstrapped fbc by packaging the precompiled binaries from
+     the fbc project.
+   * I think valac is bootstrapped from precompiled .c included in the source package
+   * How did you bootstrap fpc, or gcc?
 
   A FreeBASIC Compiler installation on Linux typically looks like this:
     bin/fbc - the compiler program
