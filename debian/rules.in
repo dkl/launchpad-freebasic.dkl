@@ -24,7 +24,7 @@ endif
 # For x86_64, we use precompiled .c
 ifeq (%FBC_BOOTSTRAP_FBARCH%,x86_64)
 $(objs): %.o: %.c
-	gcc -nostdinc \
+	gcc -c -nostdinc \
 		-Wall -Wno-unused-label -Wno-unused-function -Wno-unused-variable \
 		-Wno-unused-but-set-variable -Wno-main \
 		-fno-strict-aliasing -frounding-math \
