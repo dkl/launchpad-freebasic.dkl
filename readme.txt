@@ -51,6 +51,22 @@ What to do here:
   ./freebasic-bootstrap-x86_64.sh
     Same for x86_64
 
+  ./update-freebasic-bootstrap.sh
+    Creates the "upstream" tarballs for the freebasic-bootstrap-* packages:
+    fbc sources + precompiled .asm/.c. Version number = fbversion-N, where N
+    allows making updates without changing the base fbversion. These can't be
+    rebuilt everytime the Debian packages are made, because different timestamps
+    etc. would cause the tarball to change.
+
+
+  1. For packaging a new FB version, update the version number in config.sh
+    1.1. Generate new freebasic-bootstrap tarball:
+      ./update-freebasic-bootstrap.sh
+  2. Update debian/* files as needed, especially the debian/changelog
+  3. Build source packages
+  4. check lintian etc., maybe repeat
+  5. upload last built packages
+
 
 Some information on the FreeBASIC Compiler:
 
