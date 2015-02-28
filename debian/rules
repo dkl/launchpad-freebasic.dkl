@@ -13,18 +13,23 @@
 %:
 	dh $@
 
-objs := $(patsubst %.bas,%.o,$(wildcard src/compiler/*.bas))
+ifeq ($(DEB_HOST_ARCH),i386)
+  fbarch := x86
+endif
+ifeq ($(DEB_HOST_ARCH),amd64)
+  fbarch := x86_64
+endif
 
 # For x86, we use precompiled .asm
-ifeq ($(DEB_HOST_ARCH),i386)
-fbarch := x86
+ifeq ($(fbarch),x86)
+objs := $(patsubst %.asm,%.o,$(wildcard fbc-bootstrap/linux-x86/*.asm))
 $(objs): %.o: %.asm
 	as --strip-local-absolute $< -o $@
 endif
 
 # For x86_64, we use precompiled .c
-ifeq ($(DEB_HOST_ARCH),amd64)
-fbarch := x86_64
+ifeq ($(fbarch),x86_64)
+objs := $(patsubst %.c,%.o,$(wildcard fbc-bootstrap/linux-x86_64/*.c))
 $(objs): %.o: %.c
 	gcc -c -nostdinc \
 		-Wall -Wno-unused-label -Wno-unused-function -Wno-unused-variable \
@@ -35,7 +40,7 @@ endif
 
 bin/fbc: $(objs)
 	mkdir -p bin
-	gcc -o bin/fbc lib/freebasic/linux-$(fbarch)/fbrt0.o src/compiler/*.o \
+	gcc -o bin/fbc lib/freebasic/linux-$(fbarch)/fbrt0.o fbc-bootstrap/linux-$(fbarch)/*.o \
 		lib/freebasic/linux-$(fbarch)/libfb.a -lncurses -lm -pthread
 
 .PHONY: rtlib
