@@ -1,0 +1,7 @@
+freebasic-bootstrap (1.01.0-0ppa1~utopic1) utopic; urgency=low
+
+  * Bootstrap package based on precompiled fbc sources (.asm for x86, .c for
+    x86_64). Together with the upstream fbc sources (for the rtlib sources and
+    the base headers), this allows bootstrapping fbc.
+
+ -- Daniel C. Klauer <daniel.c.klauer@web.de>  Sat, 28 Feb 2015 15:48:50 +0100

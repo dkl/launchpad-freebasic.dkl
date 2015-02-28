@@ -1,12 +1,12 @@
 FreeBASIC source & binary packages:
 
-  freebasic-bootstrap-x86 - FB sources with precompiled compiler sources for x86
+  freebasic-bootstrap - from two source tarballs: the upstream FreeBASIC one,
+  and another one containing  precompiled compiler sources for multiple targets
+  for the specific fbc version.
    => freebasic-bootstrap
 
-  freebasic-bootstrap-x86-64 - Same for x86_64
-   => freebasic-bootstrap
-
-  freebasic - build-depends: freebasic | freebasic-bootstrap
+  freebasic - from upstream FreeBASIC source tarball,
+  build-depends: freebasic | freebasic-bootstrap
    => freebasic - meta package, depends: freebasic-compiler, freebasic-base, libfreebasic-dev
    => freebasic-compiler - provides fbc
    => freebasic-base - provides core FB headers (fbgfx.bi etc.), arch=any
@@ -41,23 +41,16 @@ FreeBASIC source & binary packages:
 
 What to do here:
 
-  ./freebasic-bootstrap-x86.sh
-    Creates the bootstrap package for x86. This involves compiling FB, so the host
-    must be set up accordingly.
-    This is best done on x86 (i.e. using a x86 fbc). Doing it on x86_64 (with a x86_64
-    fbc) should work too, but there's a bigger chance of running into bugs due to the
-    cross-compiling.
-
-  ./freebasic-bootstrap-x86_64.sh
-    Same for x86_64
+  ./debian-freebasic-bootstrap.sh
+    Builds the freebasic-bootstrap Debian source package.
 
   ./update-fbc-bootstrap.sh
     Creates the "upstream" tarball for the freebasic-bootstrap package:
-    fbc sources + precompiled .asm/.c. Version number = fbversion-N, where N
-    allows making updates without changing the base fbversion. These can't be
-    rebuilt everytime the Debian packages are made, because different timestamps
-    etc. would cause the tarball to change.
-
+    fbc sources + precompiled .asm/.c. This involves compiling FB, so the host
+    must be set up accordingly. Version number = fbversion-N, where N allows
+    making updates without changing the base fbversion. These can't be rebuilt
+    everytime the Debian packages are made, because different timestamps etc.
+    would cause the tarball to change.
 
   1. For packaging a new FB version, update the version number in config.sh
     1.1. Generate new fbc-bootstrap tarball:
@@ -140,5 +133,3 @@ To do:
 * For freebasic-gtk we may need to do something like freebasic-gtk{2|3} which each depend
   on freebasic-gtk and the corresponding libgtk*-dev package, because FB's GTK headers
   support both GTK2 and GTK3, but the two libgtk*-dev packages can't be installed in parallel.
-* Make freebasic-bootstrap packages as minimal as possible? (remove docs, non-core headers,
-  gfxlib, etc.)

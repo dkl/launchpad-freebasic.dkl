@@ -16,13 +16,15 @@
 objs := $(patsubst %.bas,%.o,$(wildcard src/compiler/*.bas))
 
 # For x86, we use precompiled .asm
-ifeq (%FBC_BOOTSTRAP_FBARCH%,x86)
+ifeq ($(DEB_HOST_ARCH),i386)
+fbarch := x86
 $(objs): %.o: %.asm
 	as --strip-local-absolute $< -o $@
 endif
 
 # For x86_64, we use precompiled .c
-ifeq (%FBC_BOOTSTRAP_FBARCH%,x86_64)
+ifeq ($(DEB_HOST_ARCH),amd64)
+fbarch := x86_64
 $(objs): %.o: %.c
 	gcc -c -nostdinc \
 		-Wall -Wno-unused-label -Wno-unused-function -Wno-unused-variable \
@@ -33,8 +35,8 @@ endif
 
 bin/fbc: $(objs)
 	mkdir -p bin
-	gcc -o bin/fbc lib/freebasic/linux-%FBC_BOOTSTRAP_FBARCH%/fbrt0.o src/compiler/*.o \
-		lib/freebasic/linux-%FBC_BOOTSTRAP_FBARCH%/libfb.a -lncurses -lm -pthread
+	gcc -o bin/fbc lib/freebasic/linux-$(fbarch)/fbrt0.o src/compiler/*.o \
+		lib/freebasic/linux-$(fbarch)/libfb.a -lncurses -lm -pthread
 
 .PHONY: rtlib
 rtlib:

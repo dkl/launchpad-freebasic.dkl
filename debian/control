@@ -1,4 +1,4 @@
-Source: freebasic-bootstrap-%FBC_BOOTSTRAP_FBDEBARCH%
+Source: freebasic-bootstrap
 Section: devel
 Priority: extra
 Maintainer: Daniel C. Klauer <daniel.c.klauer@web.de>
@@ -12,7 +12,7 @@ Standards-Version: 3.9.5
 Homepage: http://www.freebasic.net/
 
 Package: freebasic-bootstrap
-Architecture: %FBC_BOOTSTRAP_DEBARCH%
+Architecture: i386 amd64
 Depends: ${shlibs:Depends}, ${misc:Depends},
 	binutils,
 	gcc,
