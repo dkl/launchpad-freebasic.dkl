@@ -7,7 +7,8 @@ FreeBASIC source & binary packages:
 
   freebasic - from upstream FreeBASIC source tarball,
   build-depends: freebasic | freebasic-bootstrap
-   => freebasic - meta package, depends: freebasic-compiler, freebasic-base, libfreebasic-dev
+   => freebasic - meta package, depends: freebasic-compiler, freebasic-base,
+      libfreebasic-dev
    => freebasic-compiler - provides fbc
    => freebasic-base - provides core FB headers (fbgfx.bi etc.), arch=any
    => freebasic-crt - CRT bindings
@@ -16,27 +17,29 @@ FreeBASIC source & binary packages:
    => freebasic-zlib - zlib bindings
    => ...
    => libfreebasic-dev - meta package, depends on target-specific libs
-   => libfreebasic-linux-x86-dev - provides target-specific libfb stuff, cross-compiling packages based on gcc-multilib/mingw-w64
+   => libfreebasic-linux-x86-dev - provides target-specific libfb stuff,
+      cross-compiling packages based on gcc-multilib/mingw-w64
    => libfreebasic-linux-x86-64-dev
    => libfreebasic-win32-dev
    => libfreebasic-win64-dev
    => ... (e.g. ARM)
 
-  freebasic-bootstrap is used for bootstrapping fbc. The point is that in this case,
-  the source package is target-specific (freebasic-bootstrap-x86 etc.), due to the
-  precompiled fbc sources it contains. I think it would be ugly to do this with the
-  main "freebasic" source package. With that being separate from the bootstrapping stuff,
-  it can act like a "normal" package - one source, built for multiple targets.
+  freebasic-bootstrap is used for bootstrapping fbc. The point is that in this
+  case, the source package is target-specific (freebasic-bootstrap-x86 etc.),
+  due to the precompiled fbc sources it contains. I think it would be ugly to do
+  this with the main "freebasic" source package. With that being separate from
+  the bootstrapping stuff, it can act like a "normal" package - one source,
+  built for multiple targets.
 
-  freebasic-compiler, freebasic-base, freebasic-<binding> is pretty similar to the
-  packages for FreePascal: fpc, fp-unit-*, etc. Splitting up the bindings into separate
-  packages is especially useful, because not everybody needs all of them, and then for
-  example freebasic-zlib can depend on libz-dev.
+  freebasic-compiler, freebasic-base, freebasic-<binding> is pretty similar to
+  the packages for FreePascal: fpc, fp-unit-*, etc. Splitting up the bindings
+  into separate packages is especially useful, because not everybody needs all
+  of them, and then for example freebasic-zlib can depend on libz-dev.
 
-  The main reason to have libfreebasic-dev separated from the package containing fbc
-  is because that's how libraries typically are packaged. libfreebasic-dev isn't intended
-  to be used without fbc, but it could be. Also, this hints at the possibility at a
-  libfreebasic in the future.
+  The main reason to have libfreebasic-dev separated from the package containing
+  fbc is because that's how libraries typically are packaged. libfreebasic-dev
+  isn't intended to be used without fbc, but it could be. Also, this hints at
+  the possibility at a libfreebasic in the future.
 
 
 What to do here:
@@ -75,7 +78,8 @@ Some information on the FreeBASIC Compiler:
      to .asm. (works for x86, x86_64, ARM, ...)
    * (a work-in-progress LLVM IR backend)
 
-  fbc uses binutils (as, ld) to assembly and link native binaries, much like gcc.
+  fbc uses binutils (as, ld) to assembly and link native binaries, much like
+  gcc.
 
   fbc defaults to compiling for the native target, but it can cross-compile for
   other targets. The runtime libraries are target-specific.
@@ -88,13 +92,14 @@ Some information on the FreeBASIC Compiler:
   Similar cases (as far as I know - not 100% sure on this):
    * I think Mageia bootstrapped fbc by packaging the precompiled binaries from
      the fbc project.
-   * I think valac is bootstrapped from precompiled .c included in the source package
+   * I think valac is bootstrapped from precompiled .c included in the source
+     package
    * How did you bootstrap fpc, or gcc?
 
   A FreeBASIC Compiler installation on Linux typically looks like this:
     bin/fbc - the compiler program
     include/freebasic/ - .bi header files (like .h files for C/C++)
-    lib/freebasic/ - runtime libraries which are statically linked into FB programs.
+    lib/freebasic/ - runtime libraries, statically linked into FB programs
 
 
 Version numbers for Ubuntu Launchpad PPA:
@@ -125,11 +130,14 @@ To do:
   GNU/Linux distros often prefer shared libs though.
   Should there be a shared libfreebasic?
 * Potential library name conflict: libfb also is a framebuffer library,
-  may need to be renamed to libfreebasic
+  may need to be renamed to libfreebasic. Although it's not a problem, because
+  libfb is installed into /usr/lib/freebasic/linux-x86/, not into /usr/lib
+  directly.
 * add Vcs-Browser, Vcs-Git
 * make RPMs
 * upload to Launchpad + OBS
 * freebasic-dbg, freebasic-doc?
-* For freebasic-gtk we may need to do something like freebasic-gtk{2|3} which each depend
-  on freebasic-gtk and the corresponding libgtk*-dev package, because FB's GTK headers
-  support both GTK2 and GTK3, but the two libgtk*-dev packages can't be installed in parallel.
+* For freebasic-gtk we may need to do something like freebasic-gtk{2|3} which
+  each depend on freebasic-gtk and the corresponding libgtk*-dev package,
+  because FB's GTK headers support both GTK2 and GTK3, but the two libgtk*-dev
+  packages can't be installed in parallel.
