@@ -3,9 +3,7 @@ set -ex
 
 source config.sh
 
-rm -rf debian-freebasic-bootstrap
-mkdir debian-freebasic-bootstrap
-cd debian-freebasic-bootstrap
+cd freebasic-bootstrap
 
 #
 # The freebasic-bootstrap Debian source package is made from two "upstream
@@ -33,6 +31,7 @@ cp ../src/fbc-bootstrap-$FBC_VERSION.tar.xz $componenttarball
 #     rename to freebasic-bootstrap-$FBC_VERSION/fbc-bootstrap/
 #
 srcdir=freebasic-bootstrap-$FBC_VERSION
+rm -rf $srcdir
 tar xf $origtarball
 mv FreeBASIC-$FBC_VERSION-source $srcdir
 cd $srcdir
@@ -41,7 +40,7 @@ mv fbc-bootstrap-$FBC_VERSION fbc-bootstrap
 cd ..
 
 # Insert debian/ stuff
-cp -R ../debian/ $srcdir
+cp -R debian/ $srcdir
 
 # Create source package
 cd $srcdir
