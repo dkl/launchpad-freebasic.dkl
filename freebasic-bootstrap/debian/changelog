@@ -1,3 +1,11 @@
+freebasic-bootstrap (1.01.0-0ppa2~utopic1) utopic; urgency=low
+
+  * Excluded things that aren't needed for building fbc: libfbgfx, libfbmt,
+    all bindings except some of FB's base headers.
+  * Adjusted build/runtime dependencies accordingly
+
+ -- Daniel C. Klauer <daniel.c.klauer@web.de>  Sun, 01 Mar 2015 14:37:26 +0100
+
 freebasic-bootstrap (1.01.0-0ppa1~utopic1) utopic; urgency=low
 
   * Bootstrap package based on precompiled fbc sources (.asm for x86, .c for
