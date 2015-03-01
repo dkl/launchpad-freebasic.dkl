@@ -3,7 +3,7 @@ Section: devel
 Priority: extra
 Maintainer: Daniel C. Klauer <daniel.c.klauer@web.de>
 Build-Depends: debhelper (>=9),
- libncurses5-dev | libncurses-dev, libffi-dev, libgpm-dev
+ libncurses5-dev | libncurses-dev, libffi-dev, libgpm-dev, libx11-dev
 Standards-Version: 3.9.5
 Homepage: http://www.freebasic.net/
 

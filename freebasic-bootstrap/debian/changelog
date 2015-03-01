@@ -1,3 +1,9 @@
+freebasic-bootstrap (1.01.0-0ppa3~utopic1) utopic; urgency=low
+
+  * Re-added libx11-dev build-dependency to fix FTBFS
+
+ -- Daniel C. Klauer <daniel.c.klauer@web.de>  Sun, 01 Mar 2015 15:16:13 +0100
+
 freebasic-bootstrap (1.01.0-0ppa2~utopic1) utopic; urgency=low
 
   * Excluded things that aren't needed for building fbc: libfbgfx, libfbmt,
