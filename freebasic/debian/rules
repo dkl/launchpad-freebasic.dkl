@@ -1,0 +1,14 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	make
+
+override_dh_auto_install:
+	mkdir -p debian/freebasic/usr
+	make install prefix=debian/freebasic/usr
+
+	mkdir -p debian/libfreebasic-dev/usr
+	mv debian/freebasic/usr/lib debian/libfreebasic-dev/usr

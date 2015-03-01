@@ -1,0 +1,7 @@
+freebasic (1.01.0-0ppa1~utopic1) utopic; urgency=low
+
+  * Initial FreeBASIC package, will be bootstrapped by build-depending on
+    freebasic-bootstrap. After that, future freebasic packages can be built by
+    build-depending on a previous freebasic package.
+
+ -- Daniel C. Klauer <daniel.c.klauer@web.de>  Sun, 01 Mar 2015 15:02:23 +0100
