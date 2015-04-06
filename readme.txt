@@ -1,11 +1,10 @@
 FreeBASIC source & binary packages:
 
-  freebasic-bootstrap - from two source tarballs: the upstream FreeBASIC one,
-  and another one containing  precompiled compiler sources for multiple targets
-  for the specific fbc version.
+  freebasic-bootstrap - from the upstream source-bootstrap tarball, which
+  contains precompiled compiler sources for multiple targets.
    => freebasic-bootstrap
 
-  freebasic - from upstream FreeBASIC source tarball,
+  freebasic - from upstream source tarball,
   build-depends: freebasic | freebasic-bootstrap
    => freebasic - meta package, depends: freebasic-compiler, freebasic-base,
       libfreebasic-dev
@@ -24,13 +23,6 @@ FreeBASIC source & binary packages:
    => libfreebasic-win64-dev
    => ... (e.g. ARM)
 
-  freebasic-bootstrap is used for bootstrapping fbc. The point is that in this
-  case, the source package is target-specific (freebasic-bootstrap-x86 etc.),
-  due to the precompiled fbc sources it contains. I think it would be ugly to do
-  this with the main "freebasic" source package. With that being separate from
-  the bootstrapping stuff, it can act like a "normal" package - one source,
-  built for multiple targets.
-
   freebasic-compiler, freebasic-base, freebasic-<binding> is pretty similar to
   the packages for FreePascal: fpc, fp-unit-*, etc. Splitting up the bindings
   into separate packages is especially useful, because not everybody needs all
@@ -47,17 +39,7 @@ What to do here:
   ./debian-freebasic-bootstrap.sh
     Builds the freebasic-bootstrap Debian source package.
 
-  ./update-fbc-bootstrap.sh
-    Creates the "upstream" tarball for the freebasic-bootstrap package:
-    fbc sources + precompiled .asm/.c. This involves compiling FB, so the host
-    must be set up accordingly. Version number = fbversion-N, where N allows
-    making updates without changing the base fbversion. These can't be rebuilt
-    everytime the Debian packages are made, because different timestamps etc.
-    would cause the tarball to change.
-
   1. For packaging a new FB version, update the version number in config.sh
-    1.1. Generate new fbc-bootstrap tarball:
-      ./update-fbc-bootstrap.sh
   2. Update debian/* files as needed, especially the debian/changelog
   3. Build source packages
   4. check lintian etc., maybe repeat

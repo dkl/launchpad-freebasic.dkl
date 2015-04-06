@@ -1,3 +1,10 @@
+freebasic-bootstrap (1.02.0-0ppa1~utopic1) utopic; urgency=low
+
+  * New upstream release. Now based on the upstream
+    FreeBASIC-x.xx.x-source-bootstrap tarball.
+
+ -- Daniel C. Klauer <daniel.c.klauer@web.de>  Mon, 06 Apr 2015 14:55:40 +0200
+
 freebasic-bootstrap (1.01.0-0ppa3~utopic1) utopic; urgency=low
 
   * Re-added libx11-dev build-dependency to fix FTBFS

@@ -1,3 +1,9 @@
+freebasic (1.02.0-0ppa1~utopic1) utopic; urgency=low
+
+  * New upstream release
+
+ -- Daniel C. Klauer <daniel.c.klauer@web.de>  Mon, 06 Apr 2015 14:55:40 +0200
+
 freebasic (1.01.0-0ppa1~utopic1) utopic; urgency=low
 
   * Initial FreeBASIC package, will be bootstrapped by build-depending on
