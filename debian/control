@@ -13,7 +13,7 @@ Package: freebasic
 Architecture: i386 amd64
 Depends: libfreebasic-dev (= ${binary:Version}), binutils, gcc
 Suggests: geany, gdb, gpm, llvm
-Description: The FreeBASIC Compiler (meta package)
+Description: FreeBASIC Compiler
  The FreeBASIC Compiler is an open-source, free, multi-platform BASIC compiler,
  with syntax similar MS-QuickBASIC (including the GFX statements), that adds
  new features such as pointers, unsigned data types, inline assembly, a
