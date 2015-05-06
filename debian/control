@@ -2,7 +2,7 @@ Source: freebasic
 Section: devel
 Priority: extra
 Maintainer: Daniel C. Klauer <daniel.c.klauer@web.de>
-Build-Depends: debhelper (>=9), freebasic | freebasic-bootstrap,
+Build-Depends: debhelper (>=9), freebasic,
  libncurses5-dev | libncurses-dev, libffi-dev, libgpm-dev,
  libgl1-mesa-dev | libgl-dev,
  libx11-dev, libxext-dev, libxpm-dev, libxrandr-dev, libxrender-dev
@@ -12,7 +12,6 @@ Homepage: http://www.freebasic.net/
 Package: freebasic
 Architecture: i386 amd64
 Depends: libfreebasic-dev (= ${binary:Version}), binutils, gcc
-Conflicts: freebasic-bootstrap
 Suggests: geany, gdb, gpm, llvm
 Description: The FreeBASIC Compiler (meta package)
  The FreeBASIC Compiler is an open-source, free, multi-platform BASIC compiler,
@@ -26,7 +25,6 @@ Depends: ${shlibs:Depends}, ${misc:Depends},
  libncurses5-dev | libncurses-dev, libffi-dev,
  libgl1-mesa-dev | libgl-dev,
  libx11-dev, libxext-dev, libxpm-dev, libxrandr-dev, libxrender-dev
-Conflicts: freebasic-bootstrap
 Description: FreeBASIC development libraries
  This package contains the libraries necessary for building (most) FreeBASIC
  programs.
