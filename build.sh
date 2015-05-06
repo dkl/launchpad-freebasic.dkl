@@ -2,11 +2,11 @@
 set -ex
 
 # freebasic source package made from upstream source tarball
-origtarball=freebasic_${FBC_VERSION}.orig.tar.xz
+origtarball=freebasic_${FBVERSION}.orig.tar.xz
 cp src/$upstreamtitle.tar.xz $origtarball
 
 # Extract the FB sources
-srcdir=freebasic-$FBC_VERSION
+srcdir=freebasic-$FBVERSION
 rm -rf $srcdir
 tar xf $origtarball
 mv $upstreamtitle $srcdir

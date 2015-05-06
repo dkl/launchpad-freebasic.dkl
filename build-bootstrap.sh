@@ -2,7 +2,7 @@
 set -ex
 
 source config.sh
-upstreamtitle=FreeBASIC-$FBC_VERSION-source-bootstrap
+upstreamtitle=FreeBASIC-$FBVERSION-source-bootstrap
 
 cp debian/rules-bootstrap debian/rules
 
