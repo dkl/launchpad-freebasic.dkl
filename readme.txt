@@ -1,38 +1,23 @@
-FreeBASIC source & binary packages:
+freebasic source package:
 
-  freebasic-bootstrap - from the upstream source-bootstrap tarball, which
-  contains precompiled compiler sources for multiple targets.
-   => freebasic-bootstrap
+  a) upstream FreeBASIC-x.xx.x-source-bootstrap tarball, which contains
+     precompiled compiler sources for multiple targets.
+     no build-depends on itself...
+     (for bootstrapping)
 
-  freebasic - from upstream source tarball,
-  build-depends: freebasic | freebasic-bootstrap
-   => freebasic - meta package, depends: freebasic-compiler, freebasic-base,
-      libfreebasic-dev
-   => freebasic-compiler - provides fbc
-   => freebasic-base - provides core FB headers (fbgfx.bi etc.), arch=any
-   => freebasic-crt - CRT bindings
-   => freebasic-gtk - GTK2/3 bindings
-   => freebasic-png - libpng bindings
-   => freebasic-zlib - zlib bindings
-   => ...
-   => libfreebasic-dev - meta package, depends on target-specific libs
-   => libfreebasic-linux-x86-dev - provides target-specific libfb stuff,
-      cross-compiling packages based on gcc-multilib/mingw-w64
-   => libfreebasic-linux-x86-64-dev
-   => libfreebasic-win32-dev
-   => libfreebasic-win64-dev
-   => ... (e.g. ARM)
+  b) upstream FreeBASIC-x.xx.x-source tarball, plain FB sources.
+     build-depends: freebasic
+     (once the compiler was bootstrapped)
 
-  freebasic-compiler, freebasic-base, freebasic-<binding> is pretty similar to
-  the packages for FreePascal: fpc, fp-unit-*, etc. Splitting up the bindings
-  into separate packages is especially useful, because not everybody needs all
-  of them, and then for example freebasic-zlib can depend on libz-dev.
+binary packages:
+
+   freebasic
+   libfreebasic-dev
 
   The main reason to have libfreebasic-dev separated from the package containing
   fbc is because that's how libraries typically are packaged. libfreebasic-dev
   isn't intended to be used without fbc, but it could be. Also, this hints at
-  the possibility at a libfreebasic in the future.
-
+  the possibility at a shared libfreebasic.so in the future.
 
 What to do here:
 
@@ -106,20 +91,32 @@ Version numbers for Ubuntu Launchpad PPA:
 
 To do:
 
+* add Vcs-Browser, Vcs-Git
+
+* Split up binary packages further (especially the bindings)
+   freebasic - meta package
+   freebasic-compiler - fbc
+   freebasic-base - core FB headers (fbgfx.bi etc.), arch=any
+   freebasic-crt - CRT bindings
+   freebasic-png - libpng bindings, depends libpng-dev
+   freebasic-gtk  - FB's GTK binding, which supports both gtk2 and gtk3
+   freebasic-gtk2 - depends freebasic-gtk + libgtk2.0-dev
+   freebasic-gtk3 - depends freebasic-gtk + libgtk-3-dev
+   freebasic-zlib ...
+
+   FB libs for other targets based on gcc-multilib and mingw-w64
+   libfreebasic-dev - meta package
+   libfreebasic-linux-x86-dev
+   libfreebasic-linux-x86-64-dev
+   libfreebasic-win32-dev
+   libfreebasic-win64-dev
+   ... (e.g. ARM)
+   (and/or rely on multiarch for the linux-* libs; freebasic-multilib?)
+
+   freebasic-dbg, freebasic-doc?
+
 * Unknown copyright/license on some files; debian/copyright needs further
   improvement
 * FB runtime libs are only available as .a libs, not as .so yet.
   GNU/Linux distros often prefer shared libs though.
   Should there be a shared libfreebasic?
-* Potential library name conflict: libfb also is a framebuffer library,
-  may need to be renamed to libfreebasic. Although it's not a problem, because
-  libfb is installed into /usr/lib/freebasic/linux-x86/, not into /usr/lib
-  directly.
-* add Vcs-Browser, Vcs-Git
-* make RPMs
-* upload to Launchpad + OBS
-* freebasic-dbg, freebasic-doc?
-* For freebasic-gtk we may need to do something like freebasic-gtk{2|3} which
-  each depend on freebasic-gtk and the corresponding libgtk*-dev package,
-  because FB's GTK headers support both GTK2 and GTK3, but the two libgtk*-dev
-  packages can't be installed in parallel.

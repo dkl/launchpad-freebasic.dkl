@@ -1,14 +1,12 @@
 #!/bin/bash
 set -ex
 
-cd $packagename
-
 # freebasic source package made from upstream source tarball
-origtarball=${packagename}_${FBC_VERSION}.orig.tar.xz
-cp ../src/$upstreamtitle.tar.xz $origtarball
+origtarball=freebasic_${FBC_VERSION}.orig.tar.xz
+cp src/$upstreamtitle.tar.xz $origtarball
 
 # Extract the FB sources
-srcdir=$packagename-$FBC_VERSION
+srcdir=freebasic-$FBC_VERSION
 rm -rf $srcdir
 tar xf $origtarball
 mv $upstreamtitle $srcdir
@@ -20,6 +18,4 @@ cp -R debian/ $srcdir
 cd $srcdir
 debuild -S
 #debuild -d -us -uc
-cd ..
-
 cd ..
