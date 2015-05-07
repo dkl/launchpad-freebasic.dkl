@@ -1,3 +1,13 @@
+freebasic (1.02.1-0ppa2~utopic1) utopic; urgency=low
+
+  * Removed mentions of freebasic-bootstrap package
+  * Fixed description
+  * Helper .in files aren't included anymore
+  * Added Vcs-* fields
+  * After building FB, the new fbc is rebuilt with itself
+
+ -- Daniel C. Klauer <daniel.c.klauer@web.de>  Thu, 07 May 2015 15:02:35 +0200
+
 freebasic (1.02.1-0ppa1~utopic1) utopic; urgency=low
 
   * New upstream release
