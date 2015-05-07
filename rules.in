@@ -16,7 +16,7 @@ override_dh_auto_build:
         # runtime libs will be applied to fbc itself.
 	mv bin/fbc bin/fbc1
 	make clean-compiler
-	make FBC=bin/fbc1
+	make FBC="bin/fbc1 -i inc"
 	rm bin/fbc1
 
 override_dh_auto_install:
