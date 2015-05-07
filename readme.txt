@@ -91,8 +91,6 @@ Version numbers for Ubuntu Launchpad PPA:
 
 To do:
 
-* add Vcs-Browser, Vcs-Git
-
 * Split up binary packages further (especially the bindings)
    freebasic - meta package
    freebasic-compiler - fbc

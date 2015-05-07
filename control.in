@@ -2,6 +2,8 @@ Source: freebasic
 Section: devel
 Priority: extra
 Maintainer: Daniel C. Klauer <daniel.c.klauer@web.de>
+Vcs-Git: https://github.com/dkl/launchpad-freebasic.dkl.git
+Vcs-Browser: https://github.com/dkl/launchpad-freebasic.dkl
 Build-Depends: debhelper (>=9),@selfbuilddepend@
  libncurses5-dev | libncurses-dev, libffi-dev, libgpm-dev,
  libgl1-mesa-dev | libgl-dev,
