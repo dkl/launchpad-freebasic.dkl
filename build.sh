@@ -3,6 +3,7 @@ set -ex
 
 sed -e "s/@selfbuilddepend@/${selfbuilddepend}/g" < control.in > debian/control
 sed -e "s/@is_bootstrap@/${is_bootstrap}/g" < rules.in > debian/rules
+chmod +x debian/rules
 
 # freebasic source package made from upstream source tarball
 origtarball=freebasic_${FBVERSION}.orig.tar.xz
