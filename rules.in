@@ -12,6 +12,11 @@ override_dh_auto_build:
 	make
   endif
 
+        # Rebuild fbc with itself, so any improvements to the compiler and
+        # runtime libs will be applied to fbc itself.
+	make clean-compiler
+	make FBC=bin/fbc
+
 override_dh_auto_install:
 	make install prefix=debian/freebasic/usr
 
