@@ -1,3 +1,9 @@
+freebasic (1.02.1-0ppa6~@ubuntuseries@1) @ubuntuseries@; urgency=low
+
+  * Bootstrap in each Ubuntu series
+
+ -- Daniel C. Klauer <daniel.c.klauer@web.de>  Thu, 07 May 2015 17:53:34 +0200
+
 freebasic (1.02.1-0ppa5~@ubuntuseries@1) @ubuntuseries@; urgency=low
 
   * Add packages for all supported Ubuntu versions
