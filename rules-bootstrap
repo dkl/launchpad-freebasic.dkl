@@ -7,4 +7,7 @@ override_dh_auto_build:
 	make bootstrap
 
 override_dh_auto_install:
-	make install prefix=debian/freebasic-bootstrap/usr
+	make install prefix=debian/freebasic/usr
+
+	mkdir -p debian/libfreebasic-dev/usr
+	mv debian/freebasic/usr/lib debian/libfreebasic-dev/usr
