@@ -4,6 +4,6 @@ set -ex
 source config.sh
 upstreamtitle=FreeBASIC-$FBVERSION-source
 selfbuilddepend=" freebasic,"
-rulesfile="rules-normal"
+is_bootstrap=""
 
 source build.sh

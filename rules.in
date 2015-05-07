@@ -1,10 +1,16 @@
 #!/usr/bin/make -f
 
+is_bootstrap := @is_bootstrap@
+
 %:
 	dh $@
 
 override_dh_auto_build:
+  ifdef is_bootstrap
+	make bootstrap
+  else
 	make
+  endif
 
 override_dh_auto_install:
 	make install prefix=debian/freebasic/usr
