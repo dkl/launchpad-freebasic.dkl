@@ -33,7 +33,8 @@ for ubuntuseries in $allubuntuseries; do
 
 	# Create source package
 	cd $srcdir
-	debuild -S -sa
+	debuild -S
+	#debuild -S -sa
 	#debuild -d -us -uc
 	cd ..
 

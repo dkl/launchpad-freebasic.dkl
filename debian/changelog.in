@@ -1,3 +1,9 @@
+@sourcename@ (1.02.1-0ppa8~@ubuntuseries@1) @ubuntuseries@; urgency=low
+
+  * Rebuild after bootstrap in each Ubuntu series
+
+ -- Daniel C. Klauer <daniel.c.klauer@web.de>  Thu, 07 May 2015 19:17:48 +0200
+
 @sourcename@ (1.02.1-0ppa7~@ubuntuseries@1) @ubuntuseries@; urgency=low
 
   * Bootstrap in each Ubuntu series, try 2

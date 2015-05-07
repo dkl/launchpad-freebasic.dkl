@@ -2,9 +2,9 @@
 set -ex
 
 source config.sh
-ppaversion=0ppa7
+ppaversion=0ppa8
 
 for ubuntuseries in $allubuntuseries; do
 	dput --config dput-dkl.cf ppa-freebasic.dkl \
-		build/${ubuntuseries}/freebasic-bootstrap_${FBVERSION}-${ppaversion}~${ubuntuseries}1_source.changes
+		build/${ubuntuseries}/freebasic_${FBVERSION}-${ppaversion}~${ubuntuseries}1_source.changes
 done
