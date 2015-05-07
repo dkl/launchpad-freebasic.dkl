@@ -1,4 +1,4 @@
-Source: freebasic
+Source: @sourcename@
 Section: devel
 Priority: extra
 Maintainer: Daniel C. Klauer <daniel.c.klauer@web.de>

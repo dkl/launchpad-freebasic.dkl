@@ -1,3 +1,9 @@
+@sourcename@ (1.02.1-0ppa7~@ubuntuseries@1) @ubuntuseries@; urgency=low
+
+  * Bootstrap in each Ubuntu series, try 2
+
+ -- Daniel C. Klauer <daniel.c.klauer@web.de>  Thu, 07 May 2015 18:01:57 +0200
+
 freebasic (1.02.1-0ppa6~@ubuntuseries@1) @ubuntuseries@; urgency=low
 
   * Bootstrap in each Ubuntu series
