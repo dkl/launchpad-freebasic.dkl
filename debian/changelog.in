@@ -1,3 +1,9 @@
+freebasic (1.02.1-0ppa5~@ubuntuseries@1) @ubuntuseries@; urgency=low
+
+  * Add packages for all supported Ubuntu versions
+
+ -- Daniel C. Klauer <daniel.c.klauer@web.de>  Thu, 07 May 2015 16:52:40 +0200
+
 freebasic (1.02.1-0ppa4~utopic1) utopic; urgency=low
 
   * Fixed rebuilding fbc with itself

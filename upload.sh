@@ -2,4 +2,8 @@
 set -ex
 
 source config.sh
-dput --config dput-dkl.cf ppa-freebasic.dkl freebasic_${FBVERSION}-0ppa4~utopic1_source.changes
+
+for ubuntuseries in $allubuntuseries; do
+	dput --config dput-dkl.cf ppa-freebasic.dkl \
+		build/${ubuntuseries}/freebasic_${FBVERSION}-0ppa5~${ubuntuseries}1_source.changes
+done
