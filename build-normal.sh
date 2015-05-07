@@ -3,9 +3,7 @@ set -ex
 
 source config.sh
 upstreamtitle=FreeBASIC-$FBVERSION-source
-
-cp debian/rules-normal debian/rules
+selfbuilddepend=" freebasic,"
+rulesfile="rules-normal"
 
 source build.sh
-
-rm debian/rules
