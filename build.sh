@@ -1,8 +1,8 @@
 #!/bin/bash
 set -ex
 
-sed -e "s/@selfbuilddepend@/${selfbuilddepend}/g" < debian/control.in > debian/control
-cp debian/$rulesfile debian/rules
+sed -e "s/@selfbuilddepend@/${selfbuilddepend}/g" < control.in > debian/control
+cp $rulesfile debian/rules
 
 # freebasic source package made from upstream source tarball
 origtarball=freebasic_${FBVERSION}.orig.tar.xz
