@@ -17,27 +17,24 @@ binary packages:
   The main reason to have libfreebasic-dev separated from the package containing
   fbc is because that's how libraries typically are packaged. libfreebasic-dev
   isn't intended to be used without fbc, but it could be. Also, this hints at
-  the possibility at a shared libfreebasic.so in the future.
+  the possibility of a shared libfreebasic.so in the future.
 
 What to do here:
 
-  ./debian-freebasic-bootstrap.sh
-    Builds the freebasic-bootstrap Debian source package.
-
   1. For packaging a new FB version, update the version number in config.sh
   2. Update debian/* files as needed, especially the debian/changelog
-  3. Build source packages
+  3. Run ./build-normal.sh to build the normal "freebasic" source package (will
+     build-depend on itself), or ./build-bootstrap.sh to build the
+    "freebasic-bootstrap" source package.
   4. check lintian etc., maybe repeat
-  5. upload last built packages
+  5. upload source packages to Launchpad
 
 
 Some information on the FreeBASIC Compiler:
 
   FreeBASIC is a programming language influenced mostly by QBASIC, C, C++,
-  VisualBasic.
-
-  The FreeBASIC Compiler (fbc) compiles .bas source files to native code, like
-  gcc does with .c files.
+  VisualBasic. The FreeBASIC Compiler (fbc) compiles .bas source files to native
+  code, like gcc does with .c files.
 
   fbc has multiple code-generation backends:
    * an x86-assembly backend which generates .asm files directly. (x86 only)
