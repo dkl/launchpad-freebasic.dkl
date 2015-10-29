@@ -1,2 +1,2 @@
-FBVERSION=1.03.0
+FBVERSION=1.04.0
 allubuntuseries="precise trusty vivid wily"
